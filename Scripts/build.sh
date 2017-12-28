@@ -1,6 +1,6 @@
 #! /bin/sh
 
-project="ci-build"
+project="UnityMVC"
 
 echo "Attempting to build $project for Windows"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
@@ -24,3 +24,10 @@ echo "Attempting to build $project for OS X"
 
 echo 'Logs from build'
 cat $(pwd)/unity.log
+
+echo "Attempting to build $project dll"
+/Applications/Unity/MonoDevelop.app/Contents/MacOS/bin/gmcs \
+ -target:library \
+ -out:$(pwd)/output/UnityMVC.dll \
+ -debug \
+ $(pwd)/Assets/UnityMVC/*.cs

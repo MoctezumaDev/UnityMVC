@@ -26,4 +26,4 @@ install() {
 
 install "MacEditorInstaller/Unity-$VERSION.pkg"
 install "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$VERSION.pkg"
-
+install "MacMonoDevelopInstaller/UnityMonoDevelop.pkg"

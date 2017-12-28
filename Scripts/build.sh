@@ -26,8 +26,8 @@ echo 'Logs from build'
 cat $(pwd)/unity.log
 
 echo "Attempting to build $project dll"
-/Applications/Unity/MonoDevelop.app/Contents/MacOS/bin/gmcs \
- -target:library \
- -out:$(pwd)/output/UnityMVC.dll \
- -debug \
- $(pwd)/Assets/UnityMVC/*.cs
+/Applications/Unity/Unity.app/Contents/Mono/bin/gmcs \
+  -target:library \
+  -out:$(pwd)/output/UnityMVC.dll \
+  -debug \
+  $(pwd)/Assets/UnityMVC/*.cs

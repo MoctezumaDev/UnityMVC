@@ -37,6 +37,16 @@ echo "Attempting to build $project dll"
   -debug \
   $(pwd)/Assets/UnityMVC/*.cs
 
+if [ $? = 0 ] ; then
+  echo "Created dll successfully."
+  ls $(pwd)/UnityMVC/
+  error_code=0
+else
+  echo "Creating dll failed. Exited with $?."
+  error_code=1
+  cat $(pwd)/unity.log
+fi
+
 echo "Attempting to create $project unity package"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
   -batchmode \

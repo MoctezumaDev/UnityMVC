@@ -2,6 +2,8 @@
 
 project="UnityMVC"
 
+error_code=0
+
 echo "Attempting to build $project for Windows"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
   -batchmode \
@@ -42,7 +44,19 @@ echo "Attempting to create $project unity package"
   -silent-crashes \
   -logFile $(pwd)/unity.log \
   -projectPath $(pwd) \
-  -exportPackage UnityMVC/ unitymvc.unitypackage
-  -quit
+  -exportPackage UnityMVC/ $(pwd)/unitymvc.unitypackage \
+  -quit \
 
+if [ $? = 0 ] ; then
+  echo "Created package successfully."
+  error_code=0
+else
+  echo "Creating package failed. Exited with $?."
+  error_code=1
+fi
+
+echo "List project files"
 ls
+
+echo "Finishing with code $error_code"
+exit $error_code

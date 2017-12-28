@@ -25,10 +25,24 @@ echo "Attempting to build $project for OS X"
 echo 'Logs from build'
 cat $(pwd)/unity.log
 
+mkdir UnityMVC
+
 echo "Attempting to build $project dll"
 /Applications/Unity/Unity.app/Contents/Mono/bin/gmcs \
   -target:library \
   -r:/Applications/Unity/Unity.app/Contents/Managed/UnityEngine.dll  \
-  -out:$(pwd)/UnityMVC.dll \
+  -out:$(pwd)/UnityMVC/UnityMVC.dll \
   -debug \
   $(pwd)/Assets/UnityMVC/*.cs
+
+echo "Attempting to create $project unity package"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity \
+  -batchmode \
+  -nographics \
+  -silent-crashes \
+  -logFile $(pwd)/unity.log \
+  -projectPath $(pwd) \
+  -exportPackage UnityMVC/ unitymvc.unitypackage
+  -quit
+
+ls

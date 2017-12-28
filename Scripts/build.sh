@@ -44,7 +44,7 @@ echo "Attempting to create $project unity package"
   -silent-crashes \
   -logFile $(pwd)/unity.log \
   -projectPath $(pwd) \
-  -exportPackage UnityMVC/ $(pwd)/unitymvc.unitypackage \
+  -exportPackage $(pwd)/UnityMVC/ $(pwd)/unitymvc.unitypackage \
   -quit \
 
 if [ $? = 0 ] ; then

@@ -28,6 +28,7 @@ cat $(pwd)/unity.log
 echo "Attempting to build $project dll"
 /Applications/Unity/Unity.app/Contents/Mono/bin/gmcs \
   -target:library \
+  -r:/Applications/Unity/Unity.app/Contents/Managed/UnityEngine.dll  \
   -out:$(pwd)/output/UnityMVC.dll \
   -debug \
   $(pwd)/Assets/UnityMVC/*.cs

@@ -53,6 +53,7 @@ if [ $? = 0 ] ; then
 else
   echo "Creating package failed. Exited with $?."
   error_code=1
+  cat $(pwd)/unity.log
 fi
 
 echo "List project files"

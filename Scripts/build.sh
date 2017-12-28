@@ -27,19 +27,19 @@ echo "Attempting to build $project for OS X"
 echo 'Logs from build'
 cat $(pwd)/unity.log
 
-mkdir UnityMVC
+mkdir Build
 
 echo "Attempting to build $project dll"
 /Applications/Unity/Unity.app/Contents/Mono/bin/gmcs \
   -target:library \
   -r:/Applications/Unity/Unity.app/Contents/Managed/UnityEngine.dll  \
-  -out:$(pwd)/UnityMVC/UnityMVC.dll \
+  -out:$(pwd)/Build/UnityMVC.dll \
   -debug \
   $(pwd)/Assets/UnityMVC/*.cs
 
 if [ $? = 0 ] ; then
   echo "Created dll successfully."
-  ls $(pwd)/UnityMVC/
+  ls $(pwd)/Build/
   error_code=0
 else
   echo "Creating dll failed. Exited with $?."
@@ -54,10 +54,11 @@ echo "Attempting to create $project unity package"
   -silent-crashes \
   -logFile $(pwd)/unity.log \
   -projectPath $(pwd) \
-  -exportPackage $(pwd)/UnityMVC/ $(pwd)/unitymvc.unitypackage \
+  -exportPackage "Build" "$(pwd)/unitymvc.unitypackage" \
   -quit \
 
 if [ $? = 0 ] ; then
+
   echo "Created package successfully."
   error_code=0
 else

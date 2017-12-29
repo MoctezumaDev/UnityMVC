@@ -27,19 +27,19 @@ echo "Attempting to build $project for OS X"
 echo 'Logs from build'
 cat $(pwd)/unity.log
 
-mkdir Build
+mkdir Assets/Plugins
 
 echo "Attempting to build $project dll"
 /Applications/Unity/Unity.app/Contents/Mono/bin/gmcs \
   -target:library \
   -r:/Applications/Unity/Unity.app/Contents/Managed/UnityEngine.dll  \
-  -out:$(pwd)/Build/UnityMVC.dll \
+  -out:$(pwd)/Assets/Plugins/UnityMVC.dll \
   -debug \
   $(pwd)/Assets/UnityMVC/*.cs
 
 if [ $? = 0 ] ; then
   echo "Created dll successfully."
-  ls $(pwd)/Build/
+  ls $(pwd)/Assets/Plugins
   error_code=0
 else
   echo "Creating dll failed. Exited with $?."

@@ -6,11 +6,13 @@ before_install:
 - chmod a+x ./Scripts/install.sh
 - chmod a+x ./Scripts/build.sh
 install:
-- ./Scripts/install.sh
+- "./Scripts/install.sh"
 script:
-- ./Scripts/build.sh
+- "./Scripts/build.sh"
 deploy:
   provider: releases
-  api_key: "4ddf8493e4c0ba633c27f3ba43c0dc645d41ac98"
-  file: "unitymvc.unitypackage"
-  skip_cleanup: true
+  api_key:
+    secure: DvkV/QjSS3sg0NQ2O/g1u+cgbFhZKmr0HpsWJGQm/OkpJou32ul8NARVMTFiSEOakQlbX6o+dbC05L7OpEKF9aylBaR30Z/3XNsFpwKz8OhGDweN/rqD0zIkJQiWNMil2yYvEeOWbkXbIZoPLPdaCqOv7bEuhTM0dYqoyX+UZqAXJGOJwXQ/kQH9is4I0CmfIx0eiwfN0D9k2z1VjaTAUCszau8MGe/TnZ2BEFIcPc7QaMXPiHGa7i2+qE5mu0YYFCtysvgy2YZOGEsigpWPffuDxuRi/SQjYELcKhZYbLqANTffJe5KQhBgoNY3S8HCEMK294VifjCcLy5m4tqP21NFCdpJ3zB0HTfs0t4/o/setp05gIJwg2xO3+CIe3LNsB2Ybk1bDvpv1RIyQ6y+1UjiA6tkrDkLai2Z53HLxV5psvEw2FpyY0JstvGhpoNJiaS7ywFuUXwrAdEKRc+04gB63pIty0qAODOgcXXFlIad6B+eOuY0mrhFeAzmNgmty6oU3bl4UiQantt8cA5IAt+mDABRSPT/pxPqEJFd4jmkFN7EZa/j0U9mlsFLI8EJPzSRajpX3uUi8IouGVsWAzyFQX5pAEIinUgrVYtiGyGr6D/7T4bM1I2BpMAK+aReUe+dxWtUc+GHJlw5VlYNKnyz/W0ne78/SYobENvA4n0=
+  file: unitymvc.unitypackage
+  on:
+    repo: leonidax/UnityMVC

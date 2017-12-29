@@ -9,3 +9,8 @@ install:
 - ./Scripts/install.sh
 script:
 - ./Scripts/build.sh
+deploy:
+  provider: releases
+  api_key: "4ddf8493e4c0ba633c27f3ba43c0dc645d41ac98"
+  file: "unitymvc.unitypackage"
+  skip_cleanup: true

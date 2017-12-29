@@ -18,10 +18,10 @@ before_deploy:
 - MINOR=$(echo $VERSION | awk '{split($0,a,"."); print a[2]}')
 - PATCH=$(echo $VERSION | awk '{split($0,a,"."); print a[3]}')
 - PATCH=$((PATCH+1))
-- echo "new tag v$MAJOR.$MINOR.$PATCH"
+- echo "new tag v${MAJOR}.${MINOR}.${PATCH}"
 - git config --local user.name "leonidax"
 - git config --local user.email "leon.moctezuma@gmail.com"
-- git tag "v$MAJOR.$MINOR.$PATCH"
+- git tag "v${MAJOR}.${MINOR}.${PATCH}"
 deploy:
   provider: releases
   api_key:

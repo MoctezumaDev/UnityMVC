@@ -45,6 +45,7 @@ else
   echo "Creating dll failed. Exited with $?."
   error_code=1
   cat $(pwd)/unity.log
+  exit $error_code
 fi
 
 echo "Attempting to create $project unity package"
@@ -54,11 +55,10 @@ echo "Attempting to create $project unity package"
   -silent-crashes \
   -logFile $(pwd)/unity.log \
   -projectPath $(pwd) \
-  -exportPackage "Build" "$(pwd)/unitymvc.unitypackage" \
+  -executeMethod PackageBuilder.export \
   -quit \
 
 if [ $? = 0 ] ; then
-
   echo "Created package successfully."
   error_code=0
 else

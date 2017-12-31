@@ -26,18 +26,14 @@ echo "\nAttempting to build $project for OS X\n"
 
 echo "\nRunning $project test\n"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
-	-batchmode \
-	-nographics \
-	-silent-crashes \
-	-logFile $(pwd)/unity.log \
 	-projectPath $(pwd) \
 	-runEditorTests \
-	-editorTestsResultFile $(pwd)/test.xml \
-	-quit
+	-editorTestsResultFile $(pwd)/test.xml
 
 if [ $? = 0 ] ; then
   echo "Passed tests."
   error_code=0
+  cat $(pwd)/test.xml
 else
   echo "Failed tests."
   error_code=1

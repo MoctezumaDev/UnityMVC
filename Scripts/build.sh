@@ -26,10 +26,14 @@ echo "\nAttempting to build $project for OS X\n"
 
 echo "\nRunning $project test\n"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
-	-projectPath $(pwd) \
-  -batchmode \
+	-batchmode \
+  -nographics \
+  -silent-crashes \
+  -logFile $(pwd)/unity.log \
+  -projectPath $(pwd) \
 	-runTests \
   -testPlatform playmode \
+  -testFilter "<projectPath>/Library/ScriptAssemblies/Assembly-CSharp.dll" \
   -testResults $(pwd)/test.xml
 
 if [ $? = 0 ] ; then

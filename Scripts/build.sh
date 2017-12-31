@@ -4,7 +4,7 @@ project="UnityMVC"
 
 error_code=0
 
-echo "Attempting to build $project for Windows"
+echo "\nAttempting to build $project for Windows\n"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
   -batchmode \
   -nographics \
@@ -14,7 +14,7 @@ echo "Attempting to build $project for Windows"
   -buildWindowsPlayer "$(pwd)/Build/windows/$project.exe" \
   -quit
 
-echo "Attempting to build $project for OS X"
+echo "\nAttempting to build $project for OS X\n"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
   -batchmode \
   -nographics \
@@ -24,7 +24,7 @@ echo "Attempting to build $project for OS X"
   -buildOSXUniversalPlayer "$(pwd)/Build/osx/$project.app" \
   -quit
 
-echo "Running $project test"
+echo "\nRunning $project test\n"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
 	-batchmode \
 	-nographics \
@@ -36,22 +36,22 @@ echo "Running $project test"
 	-quit
 
 if [ $? = 0 ] ; then
-  echo "Created dll successfully."
+  echo "Passed tests."
   ls $(pwd)/Assets/Plugins
   error_code=0
 else
-  echo "Creating dll failed. Exited with $?."
+  echo "Failed tests."
   error_code=1
   cat $(pwd)/unity.log
   exit $error_code
 fi
 
-echo "Unit test logs"
+echo "\nUnit test logs\n"
 cat $(pwd)/test.xml
 
 mkdir Assets/Plugins
 
-echo "Attempting to build $project dll"
+echo "\nAttempting to build $project dll\n"
 /Applications/Unity/Unity.app/Contents/Mono/bin/gmcs \
   -target:library \
   -r:/Applications/Unity/Unity.app/Contents/Managed/UnityEngine.dll  \
@@ -70,7 +70,7 @@ else
   exit $error_code
 fi
 
-echo "Attempting to create $project unity package"
+echo "\nAttempting to create $project unity package\n"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
   -batchmode \
   -nographics \
@@ -89,8 +89,11 @@ else
   cat $(pwd)/unity.log
 fi
 
-echo "List project files"
+echo "\nList project files\n"
 ls
+
+echo "\nUnity Log\n"
+cat $(pwd)/unity.log
 
 echo "Finishing with code $error_code"
 exit $error_code

@@ -59,5 +59,12 @@ namespace UnityMVC
 
             Assert.AreEqual(viewComponent.text, "foostg");
         }
+
+        [UnityTest]
+        public IEnumerator TestFail()
+        {
+            yield return new WaitForEndOfFrame();
+            Assert.AreEqual(1, 2);
+        }
     }
 }

@@ -37,7 +37,6 @@ echo "\nRunning $project test\n"
 
 if [ $? = 0 ] ; then
   echo "Passed tests."
-  ls $(pwd)/Assets/Plugins
   error_code=0
 else
   echo "Failed tests."
@@ -45,9 +44,6 @@ else
   cat $(pwd)/unity.log
   exit $error_code
 fi
-
-echo "\nUnit test logs\n"
-cat $(pwd)/test.xml
 
 mkdir Assets/Plugins
 
@@ -92,8 +88,8 @@ fi
 echo "\nList project files\n"
 ls
 
-echo "\nUnity Log\n"
-cat $(pwd)/unity.log
+# echo "\nUnity Log\n"
+# cat $(pwd)/unity.log
 
 echo "Finishing with code $error_code"
 exit $error_code

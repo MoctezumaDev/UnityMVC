@@ -55,7 +55,6 @@ namespace UnityMVC
 
             yield return new WaitForEndOfFrame();
 
-            MockupController controller = view.GetComponent<MockupController>();
             MockupView viewComponent = view.GetComponent<MockupView>();
 
             Assert.AreEqual(viewComponent.text, "foostg");

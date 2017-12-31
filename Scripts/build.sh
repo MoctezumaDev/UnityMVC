@@ -24,8 +24,30 @@ echo "Attempting to build $project for OS X"
   -buildOSXUniversalPlayer "$(pwd)/Build/osx/$project.app" \
   -quit
 
-echo 'Logs from build'
-cat $(pwd)/unity.log
+echo "Running $project test"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity \
+	-batchmode \
+	-nographics \
+	-silent-crashes \
+	-logFile $(pwd)/unity.log \
+	-projectPath $(pwd) \
+	-runEditorTests \
+	-editorTestsResultFile $(pwd)/test.xml \
+	-quit
+
+if [ $? = 0 ] ; then
+  echo "Created dll successfully."
+  ls $(pwd)/Assets/Plugins
+  error_code=0
+else
+  echo "Creating dll failed. Exited with $?."
+  error_code=1
+  cat $(pwd)/unity.log
+  exit $error_code
+fi
+
+echo "Unit test logs"
+cat $(pwd)/test.xml
 
 mkdir Assets/Plugins
 

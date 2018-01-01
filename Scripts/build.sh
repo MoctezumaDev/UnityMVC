@@ -33,7 +33,7 @@ echo "\nRunning $project test\n"
   -projectPath $(pwd) \
 	-runTests \
   -testPlatform playmode \
-  -testFilter "$(pwd)/Library/ScriptAssemblies/Assembly-CSharp.dll" \
+  -testFilter "Test" \
   -testResults $(pwd)/test.xml
 
 if [ $? = 0 ] ; then

@@ -33,7 +33,6 @@ echo "\nRunning $project test\n"
   -projectPath $(pwd) \
 	-runTests \
   -testPlatform playmode \
-  -testFilter "Test" \
   -testResults $(pwd)/test.xml
 
 if [ $? = 0 ] ; then

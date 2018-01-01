@@ -37,11 +37,14 @@ echo "\nRunning $project test\n"
 
 if [ $? = 0 ] ; then
   echo "Passed tests."
-  error_code=0
+  ls
   cat $(pwd)/test.xml
+  error_code=0
 else
   echo "Failed tests."
   error_code=1
+  ls
+  cat $(pwd)/test.xml
   cat $(pwd)/unity.log
   exit $error_code
 fi

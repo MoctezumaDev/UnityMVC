@@ -77,7 +77,7 @@ echo "\nAttempting to create $project unity package\n"
   -silent-crashes \
   -logFile $(pwd)/unity.log \
   -projectPath $(pwd) \
-  -executeMethod PackageBuilder.export \
+  -executeMethod PackageBuilder.Export \
   -quit \
 
 if [ $? = 0 ] ; then
